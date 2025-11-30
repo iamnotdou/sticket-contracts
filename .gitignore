@@ -1,6 +1,62 @@
-# Rust's output directory
-target
+# Rust build artifacts
+target/
+**/*.rs.bk
+Cargo.lock
 
-# Local settings
-.soroban
-.stellar
+# Soroban / Stellar
+.soroban/
+.stellar/
+
+# Environment variables (NEVER commit these)
+.env
+.env.local
+.env.*.local
+packages/.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Node.js (for TypeScript SDKs)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# TypeScript build output (optional - you may want to keep dist/ for published packages)
+# packages/*/dist/
+
+# Test coverage
+coverage/
+*.lcov
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Private keys / secrets (CRITICAL - never commit)
+*.pem
+*.key
+*.p12
+*.pfx
+secret*
+*secret*
+*-secret.*
+
+# Deployment artifacts that may contain sensitive info
+# Note: deployment-info.json is safe for testnet, but review before mainnet
+# deployment-info.json
