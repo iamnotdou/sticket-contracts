@@ -1,0 +1,21 @@
+{
+  "network": "testnet",
+  "networkPassphrase": "Test SDF Network ; September 2015",
+  "rpcUrl": "https://soroban-testnet.stellar.org",
+  "deployedAt": "2025-11-30T05:23:20Z",
+  "sourceAccount": "GDTHRYTKBNDIN6FNNRFU4EVG7C3JVJP4FB5ITTO36TAJ33MUIFUPFSZF",
+  "contracts": {
+    "factory": {
+      "contractId": "CA2HZDTERE5QPWW3G3YZWB2XTNPGCW2HTEJEWDKCCAHZ7Q4NEO5FWL4V",
+      "wasmHash": ""
+    },
+    "nftCollections": {
+      "wasmHash": "8715c349376985d4437addbc98cdb2efed86dc711f836bf74ee48671969fae21",
+      "sampleContractId": "CBBF6CHQTD2KPFI5VQ5BT7LHPPWXGHEAGMTJ3OUZ74TVD6DCJMWN4F4V"
+    }
+  },
+  "sdks": {
+    "factory": "packages/sticket-factory",
+    "nftCollections": "packages/sticket-nft-collections"
+  }
+}

@@ -1,0 +1,66 @@
+import { Buffer } from "buffer";
+import { Client as ContractClient, Spec as ContractSpec, } from '@stellar/stellar-sdk/contract';
+export * from '@stellar/stellar-sdk';
+export * as contract from '@stellar/stellar-sdk/contract';
+export * as rpc from '@stellar/stellar-sdk/rpc';
+if (typeof window !== 'undefined') {
+    //@ts-ignore Buffer exists
+    window.Buffer = window.Buffer || Buffer;
+}
+export const networks = {
+    testnet: {
+        networkPassphrase: "Test SDF Network ; September 2015",
+        contractId: "CBBF6CHQTD2KPFI5VQ5BT7LHPPWXGHEAGMTJ3OUZ74TVD6DCJMWN4F4V",
+    }
+};
+export class Client extends ContractClient {
+    options;
+    static async deploy(
+    /** Options for initializing a Client as well as for calling a method, with extras specific to deploying. */
+    options) {
+        return ContractClient.deploy(null, options);
+    }
+    constructor(options) {
+        super(new ContractSpec(["AAAAAgAAAAAAAAAAAAAAB0RhdGFLZXkAAAAABQAAAAAAAAAAAAAACUV2ZW50SW5mbwAAAAAAAAEAAAAAAAAABlRpY2tldAAAAAAAAQAAAAQAAAAAAAAAAAAAAA1UaWNrZXRzTWludGVkAAAAAAAAAQAAAAAAAAAQU2Vjb25kYXJ5TGlzdGluZwAAAAEAAAAEAAAAAQAAAAAAAAALVXNlclRpY2tldHMAAAAAAQAAABM=",
+            "AAAAAQAAAAAAAAAAAAAACUV2ZW50SW5mbwAAAAAAAAgAAAAAAAAAD2NyZWF0b3JfZmVlX2JwcwAAAAAEAAAAAAAAAA1ldmVudF9jcmVhdG9yAAAAAAAAEwAAAAAAAAAOZXZlbnRfbWV0YWRhdGEAAAAAABAAAAAAAAAABG5hbWUAAAAQAAAAAAAAAA1wYXltZW50X3Rva2VuAAAAAAAAEwAAAAAAAAANcHJpbWFyeV9wcmljZQAAAAAAAAsAAAAAAAAABnN5bWJvbAAAAAAAEAAAAAAAAAAMdG90YWxfc3VwcGx5AAAABA==",
+            "AAAAAQAAAAAAAAAAAAAAClRpY2tldERhdGEAAAAAAAMAAAAAAAAAB2lzX3VzZWQAAAAAAQAAAAAAAAAFb3duZXIAAAAAAAATAAAAAAAAAAl0aWNrZXRfaWQAAAAAAAAE",
+            "AAAAAAAAACpJbml0aWFsaXplIHRoZSB0aWNrZXQgbWFya2V0cGxhY2UgY29udHJhY3QAAAAAAARpbml0AAAACAAAAAAAAAANZXZlbnRfY3JlYXRvcgAAAAAAABMAAAAAAAAADHRvdGFsX3N1cHBseQAAAAQAAAAAAAAADXByaW1hcnlfcHJpY2UAAAAAAAALAAAAAAAAAA9jcmVhdG9yX2ZlZV9icHMAAAAABAAAAAAAAAAOZXZlbnRfbWV0YWRhdGEAAAAAABAAAAAAAAAABG5hbWUAAAAQAAAAAAAAAAZzeW1ib2wAAAAAABAAAAAAAAAADXBheW1lbnRfdG9rZW4AAAAAAAATAAAAAA==",
+            "AAAAAAAAACtHZXQgdGhlIG5hbWUgb2YgdGhlIGV2ZW50L3RpY2tldCBjb2xsZWN0aW9uAAAAAARuYW1lAAAAAAAAAAEAAAAQ",
+            "AAAAAQAAAAAAAAAAAAAAEFNlY29uZGFyeUxpc3RpbmcAAAADAAAAAAAAAAVwcmljZQAAAAAAAAsAAAAAAAAABnNlbGxlcgAAAAAAEwAAAAAAAAAJdGlja2V0X2lkAAAAAAAABA==",
+            "AAAAAAAAABxHZXQgdGhlIHN5bWJvbCBvZiB0aGUgdGlja2V0AAAABnN5bWJvbAAAAAAAAAAAAAEAAAAQ",
+            "AAAAAAAAABZHZXQgdGlja2V0IGluZm9ybWF0aW9uAAAAAAAKZ2V0X3RpY2tldAAAAAAAAQAAAAAAAAAJdGlja2V0X2lkAAAAAAAABAAAAAEAAAfQAAAAClRpY2tldERhdGEAAA==",
+            "AAAAAAAAACRMaXN0IHRpY2tldCBvbiBzZWNvbmRhcnkgbWFya2V0cGxhY2UAAAALbGlzdF90aWNrZXQAAAAAAwAAAAAAAAAGc2VsbGVyAAAAAAATAAAAAAAAAAl0aWNrZXRfaWQAAAAAAAAEAAAAAAAAAAVwcmljZQAAAAAAAAsAAAAA",
+            "AAAAAAAAAD9NaW50IGEgdGlja2V0IGZyb20gcHJpbWFyeSBtYXJrZXRwbGFjZSAoYnV5IGZyb20gZXZlbnQgY3JlYXRvcikAAAAAC21pbnRfdGlja2V0AAAAAAEAAAAAAAAABWJ1eWVyAAAAAAAAEwAAAAEAAAAE",
+            "AAAAAAAAAChEZWxpc3QgdGlja2V0IGZyb20gc2Vjb25kYXJ5IG1hcmtldHBsYWNlAAAADWRlbGlzdF90aWNrZXQAAAAAAAACAAAAAAAAAAZzZWxsZXIAAAAAABMAAAAAAAAACXRpY2tldF9pZAAAAAAAAAQAAAAA",
+            "AAAAAAAAABVHZXQgZXZlbnQgaW5mb3JtYXRpb24AAAAAAAAOZ2V0X2V2ZW50X2luZm8AAAAAAAAAAAABAAAH0AAAAAlFdmVudEluZm8AAAA=",
+            "AAAAAAAAAB5UcmFuc2ZlciB0aWNrZXQgZGlyZWN0bHkgKFAyUCkAAAAAAA90cmFuc2Zlcl90aWNrZXQAAAAAAwAAAAAAAAAEZnJvbQAAABMAAAAAAAAAAnRvAAAAAAATAAAAAAAAAAl0aWNrZXRfaWQAAAAAAAAEAAAAAA==",
+            "AAAAAAAAABlHZXQgdGlja2V0cyBvd25lZCBieSB1c2VyAAAAAAAAEGdldF91c2VyX3RpY2tldHMAAAABAAAAAAAAAAR1c2VyAAAAEwAAAAEAAAPqAAAABA==",
+            "AAAAAAAAACdNYXJrIHRpY2tldCBhcyB1c2VkIChjaGVjay1pbiBhdCBldmVudCkAAAAAEG1hcmtfdGlja2V0X3VzZWQAAAACAAAAAAAAAAdjcmVhdG9yAAAAABMAAAAAAAAACXRpY2tldF9pZAAAAAAAAAQAAAAA",
+            "AAAAAAAAABxHZXQgbnVtYmVyIG9mIHRpY2tldHMgbWludGVkAAAAEmdldF90aWNrZXRzX21pbnRlZAAAAAAAAAAAAAEAAAAE",
+            "AAAAAAAAACVCdXkgdGlja2V0IGZyb20gc2Vjb25kYXJ5IG1hcmtldHBsYWNlAAAAAAAAFGJ1eV9zZWNvbmRhcnlfdGlja2V0AAAAAgAAAAAAAAAFYnV5ZXIAAAAAAAATAAAAAAAAAAl0aWNrZXRfaWQAAAAAAAAEAAAAAA==",
+            "AAAAAAAAABRVcGRhdGUgbGlzdGluZyBwcmljZQAAABR1cGRhdGVfbGlzdGluZ19wcmljZQAAAAMAAAAAAAAABnNlbGxlcgAAAAAAEwAAAAAAAAAJdGlja2V0X2lkAAAAAAAABAAAAAAAAAAJbmV3X3ByaWNlAAAAAAAACwAAAAA=",
+            "AAAAAAAAABVHZXQgc2Vjb25kYXJ5IGxpc3RpbmcAAAAAAAAVZ2V0X3NlY29uZGFyeV9saXN0aW5nAAAAAAAAAQAAAAAAAAAJdGlja2V0X2lkAAAAAAAABAAAAAEAAAPoAAAH0AAAABBTZWNvbmRhcnlMaXN0aW5n",
+            "AAAAAAAAADFHZXQgbnVtYmVyIG9mIHRpY2tldHMgYXZhaWxhYmxlIGluIHByaW1hcnkgbWFya2V0AAAAAAAAFWdldF90aWNrZXRzX2F2YWlsYWJsZQAAAAAAAAAAAAABAAAABA==",
+            "AAAAAAAAABpHZXQgYWxsIHNlY29uZGFyeSBsaXN0aW5ncwAAAAAAGmdldF9hbGxfc2Vjb25kYXJ5X2xpc3RpbmdzAAAAAAAAAAAAAQAAA+oAAAfQAAAAEFNlY29uZGFyeUxpc3Rpbmc="]), options);
+        this.options = options;
+    }
+    fromJSON = {
+        init: (this.txFromJSON),
+        name: (this.txFromJSON),
+        symbol: (this.txFromJSON),
+        get_ticket: (this.txFromJSON),
+        list_ticket: (this.txFromJSON),
+        mint_ticket: (this.txFromJSON),
+        delist_ticket: (this.txFromJSON),
+        get_event_info: (this.txFromJSON),
+        transfer_ticket: (this.txFromJSON),
+        get_user_tickets: (this.txFromJSON),
+        mark_ticket_used: (this.txFromJSON),
+        get_tickets_minted: (this.txFromJSON),
+        buy_secondary_ticket: (this.txFromJSON),
+        update_listing_price: (this.txFromJSON),
+        get_secondary_listing: (this.txFromJSON),
+        get_tickets_available: (this.txFromJSON),
+        get_all_secondary_listings: (this.txFromJSON)
+    };
+}

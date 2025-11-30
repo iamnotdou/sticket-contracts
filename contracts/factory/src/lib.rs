@@ -49,7 +49,7 @@ impl TicketFactory {
         salt: BytesN<32>,
         event_creator: Address,
         total_supply: u32,
-        c: i128,
+        primary_price: i128,
         creator_fee_bps: u32,
         event_metadata: String,
         name: String,
